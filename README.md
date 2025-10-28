@@ -54,14 +54,8 @@ This repository contains code for comparing different shape-constrained Gaussian
 
 ### Files
 
-- `.RData`  
-  Saved R workspace image containing intermediate R objects/results.
-
-- `.Rhistory`  
-  R command history used to generate and inspect results.
-
 - `BF_convex_1d.R`  
-  Baseline (“BF”) model on 1D convex datasets, with evaluation.
+  Baseline (“BF”) model on 1D convex datasets.
 
 - `BF_monotone_1d.R`  
   Baseline (“BF”) model on 1D monotone datasets.
@@ -69,14 +63,8 @@ This repository contains code for comparing different shape-constrained Gaussian
 - `BF_monotone_2d.R`  
   Baseline monotone model extended to 2D surfaces.
 
-- `CGP_convex.asv`  
-  MATLAB autosave/backup for `CGP_convex.m`.
-
 - `CGP_convex.m`  
   Runs the custom constrained GP with convexity constraints, evaluates predictions, and reports metrics (MSE, coverage, etc.).
-
-- `CGP_monotone.asv`  
-  MATLAB autosave/backup for `CGP_monotone.m`.
 
 - `CGP_monotone.m`  
   Runs the custom constrained GP with monotonicity constraints in 1D and evaluates predictive accuracy and uncertainty.
@@ -110,12 +98,6 @@ This repository contains code for comparing different shape-constrained Gaussian
 
 - `baseline_monotone.r`  
   Baseline monotone regression model in R; fits and evaluates a monotone-constrained function.
-
-- `bf_2D_results1.csv`  
-  Saved CSV containing metrics / summary results from 2D experiments.
-
-- `cars-mbart.csv`  
-  Real dataset (e.g. car mileage vs. price) used in monotone regression experiments.
 
 - `data_generate.R`  
   R script for generating synthetic datasets for monotonicity experiments (e.g. stepwise monotone, sigmoid-like curves).
