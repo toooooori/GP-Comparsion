@@ -1,4 +1,4 @@
-function [mse, nlpd, coverage, width, time_elapsed] = IP(x, y, xt, y_true)
+function [mse, nlpd, coverage, width, time_elapsed] = IP(x, y, xt, y_true, nvd_arg)
 % IP  Monotonic GP with standardization + larger jitter (no priors)
 %     Robust two-stage call to gp_monotonic to avoid EP instability.
 %
@@ -7,6 +7,8 @@ function [mse, nlpd, coverage, width, time_elapsed] = IP(x, y, xt, y_true)
 %   y      [N x 1] train targets
 %   xt     [M x D] test inputs
 %   y_true [M x 1] test targets (for metrics)
+%   nvd_arg monotonic in first (and only) input dim, 1 for increasing, -1
+%   for decreasing, [1 1] for both increasing in 2D
 %
 % Outputs:
 %   mse, nlpd, coverage, width, time_elapsed
@@ -37,7 +39,7 @@ function [mse, nlpd, coverage, width, time_elapsed] = IP(x, y, xt, y_true)
     % Soft constraints to avoid EP oscillations on stepwise/plateau regions
     nv0 = max(1, floor(size(x,1)/8));  % fewer virtual points initially
     nu0 = 1e-2;                        % larger nu = softer monotonic constraint
-    nvd_arg = 1;                       % monotonic in first (and only) input dim
+    %nvd_arg = 1;                       % monotonic in first (and only) input dim
 
     % Stage 1: EP without hyperparameter optimization
     gp1 = gp_monotonic(gp, xz, yz, ...

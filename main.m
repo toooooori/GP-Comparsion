@@ -1,3 +1,7 @@
+gpml_root1 = 'CGP';
+run(fullfile(gpml_root1, 'startup.m'));
+gpml_root2 = 'gpstuff';
+run(fullfile(gpml_root2, 'startup.m'));
 clear; clc;
 rng(2025, 'twister');
 
@@ -23,7 +27,9 @@ for i = 1:n_trials
         x = T.x(:);
         y = T.y(:);
 
-        [mse, nlpd, coverage, width, tsec] = IP(x, y, xt, y_true);%IP, CGP_monotone, CGP_convex
+        [mse, nlpd, coverage, width, tsec] = IP(x, y, xt, y_true, 1);%IP, CGP_monotone, CGP_convex
+        %[mse, nlpd, coverage, width, tsec] = CGP_monotone(x, y, xt, y_true);
+        %[mse, nlpd, coverage, width, tsec] = CGP_convex(x, y, xt, y_true);
         results(i,:) = [mse, nlpd, coverage, width, tsec];
     catch ME
         warning('Run %d failed: %s', i, ME.message);

@@ -56,7 +56,7 @@ K3=Kdd_ys;
 
 %----------------Initial Conditions for Gibbs Sampling---------------------
 
-M=10000;
+M=1000;
 Z=zeros(nstar,M);                                                            % indicate Z(s)
 Zd=zeros(m,M);                                                               % indicate Z'(s)
 Zd_p=zeros(m,M);                                                             % indicate Z'^{+}(s) 
@@ -199,7 +199,7 @@ end
 
 %--------------Summarize Gibbs Results-------------------------------------
 
-Zval=Z(:,5001:10000);  
+Zval=Z(:,501:1000);  
 Z_qt=quantile(Zval', [0.025,0.975]);  
 Z_qt1=Z_qt(1,:);
 Z_qt2=Z_qt(2,:);

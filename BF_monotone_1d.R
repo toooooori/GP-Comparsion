@@ -27,7 +27,7 @@ AGP_monotone_SE <- function(x, y, xt, y_true,
                   y = y,
                   constrType = "monotonicity",
                   m = m)
-  model$kernParam[[1]]$par <- c(1, 2)   # 初值
+  model$kernParam[[1]]$par <- c(1, 2)
   model$nugget   <- 1e-3
   model$varnoise <- max(var(y), 1e-6) * 0.1
   
