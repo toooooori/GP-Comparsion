@@ -1,4 +1,4 @@
-gpml_root = 'CGP';
+gpml_root = 'GPML';
 run(fullfile(gpml_root, 'startup.m'));
 clear; clc; close all; rng(1);
 
