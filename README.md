@@ -70,11 +70,11 @@ This repository contains code for comparing different shape-constrained Gaussian
   Requires GPML to be installed.
 
 - `IP.m`  
-  Runs the IP with monotonicity constraints in 1D
+  Runs the IP with monotonicity constraints in 1D.
   Requires GPstuff to be installed.
 
 - `IP_2D.m`  
-  Runs the IP with monotonicity constraints in 2D
+  Runs the IP with monotonicity constraints in 2D.
   Requires GPstuff to be installed.
 
 - `SR_convex_1d.R`  
