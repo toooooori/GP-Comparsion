@@ -1,4 +1,4 @@
-gpml_root1 = 'CGP';
+gpml_root1 = 'GPML';
 run(fullfile(gpml_root1, 'startup.m'));
 gpml_root2 = 'gpstuff';
 run(fullfile(gpml_root2, 'startup.m'));
