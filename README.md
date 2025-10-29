@@ -8,32 +8,26 @@ This repository contains code for comparing different shape-constrained Gaussian
 
 ### Folders
 
-- `CGP/`  
-  MATLAB implementation of the custom constrained Gaussian Process (CGP): kernels, constrained inference, Gibbs sampling, utilities, and its own startup code. Used by scripts such as `CGP_monotone.m`, `CGP_monotone_2D.m`, and `CGP_convex.m`.
-
 - `datasets_car/`  
-  Car mileage/price datasets used in monotone regression experiments (e.g. “price should go down as mileage increases”).
+  Car mileage/price datasets used in monotone regression experiments.
 
 - `datasets_cosh/`  
-  Synthetic datasets generated from cosh-like shapes for testing smooth convex / monotone structure.
+  cosh datasets.
 
 - `datasets_parabola/`  
-  Synthetic parabola-shaped datasets for convex or monotone function experiments.
+  Parabola datasets.
 
 - `datasets_sigmoid/`  
-  Synthetic sigmoid-shaped datasets for testing monotonicity with saturation / plateau behavior.
+  Monotonic sigmoid datasets.
 
 - `datasets_sine/`  
-  Synthetic sine-wave datasets for stress-testing model behavior on oscillatory signals.
+  Sine plus linear datasets.
 
 - `datasets_stepwise_convex/`  
-  Stepwise / piecewise convex datasets to evaluate convexity-constrained regression.
+  Stepwise convex datasets.
 
 - `datasets_stepwise_monotone/`  
-  Stepwise / piecewise monotone datasets (including plateaus / jumps) to evaluate monotonicity-constrained regression.
-
-- `gpstuff/`  
-  The GPstuff toolbox (Gaussian process library). This is required by the monotone GP baseline implemented in `IP.m`.
+  Stepwise monotone datasets.
 
 - `plots/`  
   Plotting utilities and/or saved figures for fitted curves/surfaces, credible intervals, and diagnostics.
@@ -55,75 +49,67 @@ This repository contains code for comparing different shape-constrained Gaussian
 ### Files
 
 - `BF_convex_1d.R`  
-  Baseline (“BF”) model on 1D convex datasets.
+  Runs the BF with convexity constraints in 1D.
 
 - `BF_monotone_1d.R`  
-  Baseline (“BF”) model on 1D monotone datasets.
+  Runs the BF with monotonicity constraints in 1D.
 
 - `BF_monotone_2d.R`  
-  Baseline monotone model extended to 2D surfaces.
+  Runs the BF with monotonicity constraints in 2D.
 
 - `CGP_convex.m`  
-  Runs the custom constrained GP with convexity constraints, evaluates predictions, and reports metrics (MSE, coverage, etc.).
+  Runs the CGP with convexity constraints in 1D.
+  Requires GPML to be installed.
 
 - `CGP_monotone.m`  
-  Runs the custom constrained GP with monotonicity constraints in 1D and evaluates predictive accuracy and uncertainty.
+  Runs the CGP with monotonicity constraints in 1D.
+  Requires GPML to be installed.
 
 - `CGP_monotone_2D.m`  
-  Runs the custom constrained GP with monotonicity constraints in 2D (e.g. enforcing monotonic behavior in multiple input dimensions).
-
-- `GP_monotone_1d.R`  
-  R implementation of a monotone GP model in 1D (Gaussian process with monotone shape constraint), used as a baseline against CGP.
+  Runs the CGP with monotonicity constraints in 2D.
+  Requires GPML to be installed.
 
 - `IP.m`  
-  MATLAB wrapper around a monotone GP built with GPstuff:
-  - standardizes inputs/outputs,
-  - adds virtual derivative observations via `gp_monotonic` to enforce monotonicity,
-  - predicts on test points,
-  - computes metrics (MSE, NLPD, coverage, interval width, runtime),
-  - optionally plots and saves results.
+  Runs the IP with monotonicity constraints in 1D
   Requires GPstuff to be installed.
 
 - `IP_2D.m`  
-  Extension of `IP.m` to handle 2D monotonicity constraints (e.g. constraining one or both input dimensions to be monotone).
+  Runs the IP with monotonicity constraints in 2D
+  Requires GPstuff to be installed.
 
 - `SR_convex_1d.R`  
-  Alternative baseline (“SR”) for convex regression in 1D, typically a shape-restricted regression method.
+  Runs the SR with convexity constraints in 1D.
 
 - `SR_monotone_1d.R`  
-  The same “SR” baseline for 1D monotone datasets.
+  Runs the SR with monotonicity constraints in 1D.
 
 - `baseline_convex.R`  
-  Baseline convex regression model in R; fits and evaluates a convex-constrained function.
+  Baseline convex regression model.
 
 - `baseline_monotone.r`  
-  Baseline monotone regression model in R; fits and evaluates a monotone-constrained function.
+  Baseline monotone regression model.
 
 - `data_generate.R`  
-  R script for generating synthetic datasets for monotonicity experiments (e.g. stepwise monotone, sigmoid-like curves).
+  Generate synthetic datasets for monotonicity experiments.
 
 - `data_generate_convex.R`  
-  R script for generating synthetic convex datasets.
+  Generate synthetic datasets for convexity experiments.
 
 - `fit_plot.m`  
-  MATLAB plotting helper to visualize fitted means, credible intervals, and observed data.
+  Plotting helper to visualize fitted means, credible intervals, and observed data.
 
 - `main.m`  
-  MATLAB entry script that ties the pipeline together:
-  - loads or selects a dataset,
-  - runs both IP and CGP,
-  - computes summary metrics,
-  - can generate plots.
+  - Runs IP/CGP for monotonicity/convexity experiments and computes summary metrics.
 
 - `simulate_convex.R`  
-  R script to run repeated convex-regression simulations and collect performance statistics.
+  Runs BF/SR/Baselines for monotonicity experiments and computes summary metrics.
 
 - `simulate_monotone.R`  
-  R script to run repeated monotone-regression simulations and collect performance statistics.
+  Runs BF/SR/Baselines for convexity experiments and computes summary metrics.
 
 - `test_convex.R`  
-  R script applying the models to convex datasets and reporting predictive metrics.
+  T tests of the performance for convexity experiments.
 
 - `test_monotone.R`  
-  R script applying the models to monotone datasets and reporting predictive metrics.
+  T tests of the performance for monotonicity experiments.
 
